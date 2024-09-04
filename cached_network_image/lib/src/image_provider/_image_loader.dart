@@ -139,7 +139,7 @@ class ImageLoader implements platform.ImageLoader {
       });
 
       errorListener?.call(e);
-      rethrow;
+      yield* Stream.error(error, stackTrace);
     } finally {
       await chunkEvents.close();
     }
